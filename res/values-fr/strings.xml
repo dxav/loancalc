@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Calc Crédit</string>
+    <string name="title_message">Calcul du montant des mensualités de votre prêt
+        à partir du capital emprunté, du taux d\'intérêts et du nombre de 
+        mensualités.</string>
+    <string name="borrowed_capital">Capital emprunté (€)</string>
+    <string name="borrowed_capital_error_message">Vous devez entrer le capital
+         emprunté !</string>
+    <string name="interest_rate">Taux d\'intérêts annuel (%)</string>
+    <string name="interest_rate_error_message">Vous devez entrer le taux 
+        d\'intérêt !</string>
+    <string name="number_of_installments">Nombre de mensualités</string>
+    <string name="number_of_installments_error_message">Vous devez entrer le
+        nombre de mensualités !</string>
+    <string name="amount_of_the_installments">Montant des mensualités (€)</string>
+    <string name="cost_of_the_loan">Coût du crédit (€)</string>
+    <string name="enter_button">Entrée</string>
+    <string name="display_installments_table_button">Tableau des mensualités</string>   
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_display_loan_results">Calc Crédit - Tableau des mensualités</string>
+</resources>
