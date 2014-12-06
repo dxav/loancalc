@@ -48,72 +48,6 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-//	public void startComputation(View v) {
-//
-//		// Get the borrowed capital
-//		EditText borrowedCapital = (EditText) findViewById(R.id.borrowedCapital);
-//		String capitalStr = borrowedCapital.getText().toString();
-//		float capital = 0;
-//		try {
-//			capital = Float.valueOf(capitalStr);
-//		} catch (NumberFormatException e) {
-//			// If the rate has not been entered
-//			// Raise the helper message read from the ressources strings
-//			Toast.makeText(
-//					MainActivity.this,
-//					getResources().getString(
-//							R.string.borrowed_capital_error_message),
-//					Toast.LENGTH_SHORT).show();
-//			e.printStackTrace();
-//			return;
-//		}
-//
-//		// Get the interest rate (in percentage)
-//		EditText interestRate = (EditText) findViewById(R.id.interestRate);
-//		String annualRatePercentageStr = interestRate.getText().toString();
-//		float annualRatePercentage = 0;
-//		try {
-//			annualRatePercentage = Float.valueOf(annualRatePercentageStr);
-//		} catch (NumberFormatException e) {
-//			// If the rate has not been entered
-//			// Raise the helper message read from the ressources strings
-//			Toast.makeText(
-//					MainActivity.this,
-//					getResources().getString(
-//							R.string.interest_rate_error_message),
-//					Toast.LENGTH_SHORT).show();
-//			e.printStackTrace();
-//			return;
-//		}
-//
-//		// Get the number of installments
-//		EditText numberOfInstallments = (EditText) findViewById(R.id.numberOfInstallments);
-//		String numberOfInstallmentsStr = numberOfInstallments.getText()
-//				.toString();
-//		int n = 1;
-//		try {
-//			n = Integer.valueOf(numberOfInstallmentsStr);
-//		} catch (NumberFormatException e) {
-//			// If the rate has not been entered
-//			// Raise the helper message read from the ressources strings
-//			Toast.makeText(
-//					MainActivity.this,
-//					getResources().getString(
-//							R.string.number_of_installments_error_message),
-//					Toast.LENGTH_SHORT).show();
-//			e.printStackTrace();
-//			return;
-//		}
-//
-//		// Compute the monthly rate
-//		float rate = (float) (0.01 * annualRatePercentage / 12);
-//		// Compute the amounts of the monthly installments
-//		float amount = (float) ((capital * rate) / (1 - Math.pow(1 + rate, -n)));
-//
-//		// Write the result into the amountOfInstallments TextView
-//		TextView amountOfInstallments = (TextView) findViewById(R.id.amountOfInstallments);
-//		amountOfInstallments.setText(String.format("%.2f", amount));
-//	}
 	
 	public void startComputation(View v) {
 
@@ -128,7 +62,7 @@ public class MainActivity extends Activity {
 			capital = Float.valueOf(capitalStr);
 		} catch (NumberFormatException e) {
 			// If the rate has not been entered
-			// Raise the helper message read from the ressources strings
+			// Raise the helper message read from the resources strings
 			Toast.makeText(
 					MainActivity.this,
 					getResources().getString(
@@ -149,7 +83,7 @@ public class MainActivity extends Activity {
 			annualRatePercentage = Float.valueOf(annualRatePercentageStr);
 		} catch (NumberFormatException e) {
 			// If the rate has not been entered
-			// Raise the helper message read from the ressources strings
+			// Raise the helper message read from the resources strings
 			Toast.makeText(
 					MainActivity.this,
 					getResources().getString(
@@ -185,7 +119,7 @@ public class MainActivity extends Activity {
 		// Create the loan object
 		Loan loan = new Loan(capital, annualRatePercentage, nInstallments);
 		// Compute the amounts of the monthly installments
-		float amount = loan.computeInstallmentAmount();
+		float amount = loan.getInstallmentAmount(1);
 
 		// Write the result into the amountOfInstallments TextView
 		TextView amountOfInstallments = (TextView) findViewById(R.id.amountOfInstallments);
@@ -205,6 +139,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public void displayInstallmentsTable(View v) {
+		// Update the computation
+		startComputation(v);
 		// Start the activity
 		startActivity(intent);
 	}

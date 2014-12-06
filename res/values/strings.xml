@@ -20,5 +20,10 @@
     <string name="display_installments_table_button">Installments table</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_display_loan_results">Loan Calc - Installments table</string>
-
+    <string name="repayments">Repayments:</string>    
+    <string name="installment_number">Number</string>
+    <string name="outstanding_capital">Outstanding capital</string>
+    <string name="interest_repayment">Interests</string>
+    <string name="principal_repayment">Pincipal</string>
+    <string name="installment">Installment</string>
 </resources>

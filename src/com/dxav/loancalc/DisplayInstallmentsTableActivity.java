@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class DisplayInstallmentsTableActivity extends Activity {
@@ -13,8 +15,8 @@ public class DisplayInstallmentsTableActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_display_installments_table);
-		
+		this.setContentView(R.layout.activity_display_installments_table);
+	
 		Intent intent = getIntent();
 		float capital = intent.getFloatExtra(MainActivity.EXTRA_BORROWED_CAPITAL, 0);
 		float annualRatePercentage = intent.getFloatExtra(MainActivity.EXTRA_ANNUAL_RATE_PERCENTAGE, 0);
@@ -22,12 +24,49 @@ public class DisplayInstallmentsTableActivity extends Activity {
 
 		// Create the loan object
 		Loan loan = new Loan(capital, annualRatePercentage, nInstallments);
-		// Compute the amounts of the monthly installments
-		float amount = loan.computeInstallmentAmount();
-
+				
 		// Write the result into the amountOfInstallments TextView
 		TextView amountOfInstallments = (TextView) findViewById(R.id.amountOfInstallments);
-		amountOfInstallments.setText(String.format("%.2f", amount));
+		amountOfInstallments.setText(String.format("%.2f", loan.getInstallmentAmount(1)));
+		
+		// Get the table layout defined in the display installments activity
+		TableLayout tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+		
+		// Create the table
+		for (int i=1; i<=nInstallments; i++){
+			// Create a new row
+			TableRow row = new TableRow(this);
+			tableLayout.addView(row);
+			
+			
+			// Create the new row with text views 
+			TextView textViewInstallmentNumber = new TextView(this);
+			TextView textViewOutstandingCapital = new TextView(this);
+			TextView textViewInterest = new TextView(this);
+			TextView textViewPrincipal = new TextView(this);
+			TextView textViewInstallment = new TextView(this);
+			
+			textViewInstallmentNumber.setText(String.valueOf(i));
+			textViewOutstandingCapital.setText(String.format("%.2f", loan.getOutstandingCapital(i)));
+			textViewInterest.setText(String.format("%.2f", loan.computeInterestRepayment(i)));
+			textViewPrincipal.setText(String.format("%.2f", loan.computePrincipalRepayment(i)));
+			textViewInstallment.setText(String.format("%.2f", loan.getInstallmentAmount(i)));
+			
+			float scale = getResources().getDisplayMetrics().density;			
+			int paddingPixel = (int) (10*scale + 0.5f);
+			
+			textViewInstallmentNumber.setPadding(paddingPixel, 0, paddingPixel, 0);
+			textViewOutstandingCapital.setPadding(paddingPixel, 0, paddingPixel, 0);
+			textViewInterest.setPadding(paddingPixel, 0, paddingPixel, 0);
+			textViewPrincipal.setPadding(paddingPixel, 0, paddingPixel, 0);
+			textViewInstallment.setPadding(paddingPixel, 0, paddingPixel, 0);
+			
+			row.addView(textViewInstallmentNumber);
+			row.addView(textViewOutstandingCapital);
+			row.addView(textViewInterest);
+			row.addView(textViewPrincipal);
+			row.addView(textViewInstallment);
+		}	
 	}
 
 	@Override

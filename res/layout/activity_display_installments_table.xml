@@ -1,33 +1,113 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     tools:context="com.dxav.loancalc.MainActivity" >
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:stretchColumns="1" >
-        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
         <TableRow>
 
             <TextView
                 android:id="@+id/textAmountOfInstallments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:padding="10dp"
                 android:text="@string/amount_of_the_installments"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/amountOfInstallments"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
                 android:padding="10dp"
-                android:text=""
                 android:textSize="@dimen/text_size_normal" />
         </TableRow>
-        
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/installmentNumber"
+                android:padding="10dp"
+                android:text="@string/installment_number"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/outstanding_capital"
+                android:padding="10dp"
+                android:text="@string/outstanding_capital"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/interestRepayment"
+                android:padding="10dp"
+                android:text="@string/interest_repayment"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/principalRepayment"
+                android:padding="10dp"
+                android:text="@string/principal_repayment"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/installment"
+                android:padding="10dp"
+                android:text="@string/installment"
+                android:textStyle="bold" />
+        </TableRow>
     </TableLayout>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:layout_height="0dp"
+                android:visibility="invisible" >
+
+                <TextView
+                    android:layout_height="0dp"
+                    android:padding="10dip"
+                    android:text="@string/installment_number"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:text="@string/outstanding_capital"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:text="@string/interest_repayment"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:text="@string/principal_repayment"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_height="0dp"
+                    android:padding="10dp"
+                    android:text="@string/installment"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>
