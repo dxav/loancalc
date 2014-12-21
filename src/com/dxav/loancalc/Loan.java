@@ -55,7 +55,7 @@ public class Loan {
 
 	// Return the outstanding capital before installment i
 	public double getOutstandingCapital(int i) {
-		if ((i>0) && (i<numberOfInsatllments_m)) {
+		if ((i>0) && (i<=numberOfInsatllments_m)) {
 			return outstandingCapital_m[i-1];
 		} else {
 			return 0;
