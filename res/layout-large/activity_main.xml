@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+   Copyright 2014 Xavier Delaunay
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License. 
+-->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -61,13 +77,29 @@
 
         <TableRow>
 
-            <Button
-                android:id="@+id/enterButton"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:onClick="startComputation"
-                android:text="@string/enter_button" />
+                android:layout_column="1" >
+
+                <Button
+                    android:id="@+id/enterButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/resetButton"
+                    android:layout_toStartOf="@+id/resetButton"
+                    android:onClick="enterButtonProcess"
+                    android:text="@string/enter_button" />
+
+                <Button
+                    android:id="@+id/resetButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:onClick="resetButtonProcess"
+                    android:text="@string/reset_button" />
+            </RelativeLayout>
         </TableRow>
 
         <View
@@ -75,44 +107,45 @@
             android:background="#FF909090" />
 
         <TableRow>
-        <TextView
-            android:id="@+id/textAmountOfInstallments"
-            android:text="@string/amount_of_the_installments"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/amountOfInstallments"
-            android:padding="10dp"
-            android:text=""
-            android:textSize="@dimen/text_size_normal" />
+            <TextView
+                android:id="@+id/textAmountOfInstallments"
+                android:text="@string/amount_of_the_installments"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/amountOfInstallments"
+                android:padding="10dp"
+                android:text=""
+                android:textSize="@dimen/text_size_normal" />
         </TableRow>
-        
+
         <TableRow>
-        <TextView
-            android:id="@+id/textCostOfLoan"
-            android:text="@string/cost_of_the_loan"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/loanCost"
-            android:padding="10dp"
-            android:text=""
-            android:textSize="@dimen/text_size_normal" />
+            <TextView
+                android:id="@+id/textCostOfLoan"
+                android:text="@string/cost_of_the_loan"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/loanCost"
+                android:padding="10dp"
+                android:text=""
+                android:textSize="@dimen/text_size_normal" />
         </TableRow>
-        
+
         <View
             android:layout_height="2dip"
             android:background="#FF909090" />
-        
-            <Button
-                android:id="@+id/displayInstallmentsTableButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:onClick="displayInstallmentsTable"
-                android:text="@string/display_installments_table_button"
-                android:visibility="invisible" />
-            
+
+        <Button
+            android:id="@+id/displayInstallmentsTableButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:onClick="displayInstallmentsTable"
+            android:text="@string/display_installments_table_button"
+            android:visibility="invisible" />
     </TableLayout>
-    
+
 </ScrollView>
