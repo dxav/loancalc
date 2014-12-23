@@ -35,11 +35,11 @@
     <string name="reset_button">Effacer</string>
     <string name="display_installments_table_button">Tableau des mensualités</string>   
     <string name="action_settings">Paramètres</string>
-    <string name="title_activity_display_loan_results">Calc Crédit - Tableau des mensualités</string>
     <string name="repayments">Remboursements :</string>
     <string name="installment_number">Echéance</string>
     <string name="outstanding_capital">Capital restant dû</string>
-    <string name="interest_repayment">Intérêts</string>
-    <string name="principal_repayment">Principal</string>
-    <string name="installment">Mensualité</string>
+    <string name="interest_repayment">Intérêts remboursés</string>
+    <string name="principal_repayment">Principal remboursé</string>
+    <string name="installment_amount">Mensualité</string>
+    <string name="title_activity_display_installments_list">Calc Crédit - Tableau des mensualités</string>
 </resources>

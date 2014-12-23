@@ -25,8 +25,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,9 +39,9 @@ public class MainActivity extends Activity {
 
 	private static Intent intent = null;
 
-	private static double capital_m = 0;
-	private static double annualRatePercentage_m = 0;
-	private static int nInstallments_m = 0;
+	private double mCapital = 0;
+	private double mAnnualRatePercentage = 0;
+	private int mNumberOfInstallments = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,36 +58,18 @@ public class MainActivity extends Activity {
 		setNumberOfInstallmentsText();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 
 	public void enterButtonProcess(View v) {
 		// Action when the user clicks on the "Enter" button
 
 		// Create an intent
-		intent = new Intent(this, DisplayInstallmentsTableActivity.class);
+		intent = new Intent(this, DisplayInstallmentsListActivity.class);
 
 		// Get the borrowed capital
 		String capitalStr = getBorrowedCapitalText();
 		try {
-			//capital_m = stringToDouble(capitalStr);
-			capital_m = Double.parseDouble(capitalStr);
+			//mCapital = stringToDouble(capitalStr);
+			mCapital = Double.parseDouble(capitalStr);
 		} catch (NumberFormatException e) {
 			// If the rate has not been entered
 			// Raise the helper message read from the resources strings
@@ -102,12 +82,12 @@ public class MainActivity extends Activity {
 			return;
 		}
 		// Add it to the intent
-		intent.putExtra(EXTRA_BORROWED_CAPITAL, capital_m);
+		intent.putExtra(EXTRA_BORROWED_CAPITAL, mCapital);
 
 		// Get the interest rate (in percentage)
 		String annualRatePercentageStr = getInterestRateText();
 		try {
-			annualRatePercentage_m = Double.parseDouble(annualRatePercentageStr);
+			mAnnualRatePercentage = Double.parseDouble(annualRatePercentageStr);
 		} catch (NumberFormatException e) {
 			// If the rate has not been entered
 			// Raise the helper message read from the resources strings
@@ -120,12 +100,12 @@ public class MainActivity extends Activity {
 			return;
 		}
 		// Add it to the intent
-		intent.putExtra(EXTRA_ANNUAL_RATE_PERCENTAGE, annualRatePercentage_m);
+		intent.putExtra(EXTRA_ANNUAL_RATE_PERCENTAGE, mAnnualRatePercentage);
 
 		// Get the number of installments
 		String numberOfInstallmentsStr = getNumberOfInstallmentsText();
 		try {
-			nInstallments_m = Integer.valueOf(numberOfInstallmentsStr);
+			mNumberOfInstallments = Integer.valueOf(numberOfInstallmentsStr);
 		} catch (NumberFormatException e) {
 			// If the rate has not been entered
 			// Raise the helper message read from the resources strings
@@ -138,16 +118,16 @@ public class MainActivity extends Activity {
 			return;
 		}
 		// Add it to the intent
-		intent.putExtra(EXTRA_NUMBER_OF_INSTALLMENTS, nInstallments_m);
+		intent.putExtra(EXTRA_NUMBER_OF_INSTALLMENTS, mNumberOfInstallments);
 
 		saveData();
 		startComputation();
 	}
 	
 	public void resetButtonProcess(View v) {
-		capital_m = 0;
-		annualRatePercentage_m = 0;
-		nInstallments_m = 0;
+		mCapital = 0;
+		mAnnualRatePercentage = 0;
+		mNumberOfInstallments = 0;
 		
 		// Reset the editText boxes hints
 		EditText borrowedCapital = (EditText) findViewById(R.id.borrowedCapital);
@@ -186,9 +166,9 @@ public class MainActivity extends Activity {
 
 	private void setBorrowedCapitalText() {
 		// Set the borrowed capital in the edit text
-		if (capital_m > 0) {
+		if (mCapital > 0) {
 			EditText borrowedCapital = (EditText) findViewById(R.id.borrowedCapital);
-			String capitalStr = String.format(Locale.ENGLISH, "%.2f", capital_m);
+			String capitalStr = String.format(Locale.ENGLISH, "%.2f", mCapital);
 			borrowedCapital.setText(capitalStr, TextView.BufferType.EDITABLE);
 		}
 	}
@@ -202,10 +182,10 @@ public class MainActivity extends Activity {
 
 	private void setInterestRateText() {
 		// Set the interest rate in the edit text
-		if (annualRatePercentage_m > 0) {
+		if (mAnnualRatePercentage > 0) {
 			EditText interestRate = (EditText) findViewById(R.id.interestRate);
 			String annualRatePercentageStr = String.format(Locale.ENGLISH, "%.2f",
-					annualRatePercentage_m);
+					mAnnualRatePercentage);
 			interestRate.setText(annualRatePercentageStr);
 		}
 	}
@@ -220,9 +200,9 @@ public class MainActivity extends Activity {
 
 	private void setNumberOfInstallmentsText() {
 		// Set the number of installments in the edit text
-		if (nInstallments_m > 0) {
+		if (mNumberOfInstallments > 0) {
 			EditText numberOfInstallments = (EditText) findViewById(R.id.numberOfInstallments);
-			String numberOfInstallmentsStr = String.valueOf(nInstallments_m);
+			String numberOfInstallmentsStr = String.valueOf(mNumberOfInstallments);
 			numberOfInstallments.setText(numberOfInstallmentsStr);
 		}
 	}
@@ -232,11 +212,11 @@ public class MainActivity extends Activity {
 		SharedPreferences sharedPref = getSharedPreferences(
 				getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = sharedPref.edit();
-		editor.putFloat(getString(R.string.saved_borrowed_capital), (float) capital_m);
+		editor.putFloat(getString(R.string.saved_borrowed_capital), (float) mCapital);
 		editor.putFloat(getString(R.string.saved_annual_percentage_rate),
-				 (float) annualRatePercentage_m);
+				 (float) mAnnualRatePercentage);
 		editor.putInt(getString(R.string.saved_number_of_installments),
-				nInstallments_m);
+				mNumberOfInstallments);
 		editor.commit();
 	}
 
@@ -244,18 +224,18 @@ public class MainActivity extends Activity {
 		// Restore the data saved
 		SharedPreferences sharedPref = getSharedPreferences(
 				getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-		capital_m = sharedPref.getFloat(
+		mCapital = sharedPref.getFloat(
 				getString(R.string.saved_borrowed_capital), (float) 0.0);
-		annualRatePercentage_m = sharedPref.getFloat(
+		mAnnualRatePercentage = sharedPref.getFloat(
 				getString(R.string.saved_annual_percentage_rate), (float) 0.0);
-		nInstallments_m = sharedPref.getInt(
+		mNumberOfInstallments = sharedPref.getInt(
 				getString(R.string.saved_number_of_installments), 0);
 	}
 
 	private void startComputation() {
 
 		// Create the loan object
-		Loan loan = new Loan(capital_m, annualRatePercentage_m, nInstallments_m);
+		Loan loan = new Loan(mCapital, mAnnualRatePercentage, mNumberOfInstallments);
 		// Compute the amounts of the monthly installments
 		double amount = loan.getInstallmentAmount(1);
 
