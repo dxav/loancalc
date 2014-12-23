@@ -33,13 +33,15 @@
     <string name="cost_of_the_loan">Coût du crédit (€)</string>
     <string name="enter_button">Entrée</string>
     <string name="reset_button">Effacer</string>
-    <string name="display_installments_table_button">Tableau des mensualités</string>   
-    <string name="action_settings">Paramètres</string>
-    <string name="repayments">Remboursements :</string>
+    <string name="display_installments_table_button">Tableau des mensualités</string>
     <string name="installment_number">Echéance</string>
     <string name="outstanding_capital">Capital restant dû</string>
     <string name="interest_repayment">Intérêts remboursés</string>
     <string name="principal_repayment">Principal remboursé</string>
     <string name="installment_amount">Mensualité</string>
     <string name="title_activity_display_installments_list">Calc Crédit - Tableau des mensualités</string>
+    <string name="preference_file_key">com.dxav.loancalculator.PREFERENCE_FILE_KEY</string>
+    <string name="saved_borrowed_capital">com.dxav.loancalculator.BORROWED_CAPITAL</string>
+    <string name="saved_annual_percentage_rate">com.dxav.loancalculator.ANNUAL_RATE_PERCENTAGE</string>
+    <string name="saved_number_of_installments">com.dxav.loancalculator.NUMBER_OF_INSTALLMENTS</string>
 </resources>

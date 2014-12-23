@@ -35,7 +35,6 @@
     <string name="enter_button">Enter</string>
     <string name="reset_button">Reset</string>
     <string name="display_installments_table_button">Installments table</string>
-    <string name="repayments">Repayments:</string>
     <string name="installment_number">Installment</string>
     <string name="outstanding_capital">Outstanding capital</string>
     <string name="interest_repayment">Interests repayment</string>

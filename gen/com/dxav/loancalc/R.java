@@ -60,7 +60,6 @@ public final class R {
         public static final int custom_five_textviews_row_for_listview=0x7f030002;
     }
     public static final class string {
-        public static final int action_settings=0x7f050018;
         public static final int amount_of_the_installments=0x7f050008;
         public static final int app_name=0x7f050000;
         public static final int borrowed_capital=0x7f050002;
@@ -68,22 +67,21 @@ public final class R {
         public static final int cost_of_the_loan=0x7f050009;
         public static final int display_installments_table_button=0x7f05000c;
         public static final int enter_button=0x7f05000a;
-        public static final int installment_amount=0x7f050012;
-        public static final int installment_number=0x7f05000e;
+        public static final int installment_amount=0x7f050011;
+        public static final int installment_number=0x7f05000d;
         public static final int interest_rate=0x7f050004;
         public static final int interest_rate_error_message=0x7f050005;
-        public static final int interest_repayment=0x7f050010;
+        public static final int interest_repayment=0x7f05000f;
         public static final int number_of_installments=0x7f050006;
         public static final int number_of_installments_error_message=0x7f050007;
-        public static final int outstanding_capital=0x7f05000f;
-        public static final int preference_file_key=0x7f050014;
-        public static final int principal_repayment=0x7f050011;
-        public static final int repayments=0x7f05000d;
+        public static final int outstanding_capital=0x7f05000e;
+        public static final int preference_file_key=0x7f050013;
+        public static final int principal_repayment=0x7f050010;
         public static final int reset_button=0x7f05000b;
-        public static final int saved_annual_percentage_rate=0x7f050016;
-        public static final int saved_borrowed_capital=0x7f050015;
-        public static final int saved_number_of_installments=0x7f050017;
-        public static final int title_activity_display_installments_list=0x7f050013;
+        public static final int saved_annual_percentage_rate=0x7f050015;
+        public static final int saved_borrowed_capital=0x7f050014;
+        public static final int saved_number_of_installments=0x7f050016;
+        public static final int title_activity_display_installments_list=0x7f050012;
         public static final int title_message=0x7f050001;
     }
     public static final class style {

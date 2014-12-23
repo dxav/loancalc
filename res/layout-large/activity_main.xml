@@ -75,12 +75,10 @@
                 android:inputType="number" />
         </TableRow>
 
-        <TableRow>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_column="1" >
+                android:layout_height="wrap_content" >
 
                 <Button
                     android:id="@+id/enterButton"
@@ -100,7 +98,6 @@
                     android:onClick="resetButtonProcess"
                     android:text="@string/reset_button" />
             </RelativeLayout>
-        </TableRow>
 
         <View
             android:layout_height="2dip"
