@@ -143,7 +143,7 @@ public class Loan {
 	 * @return the input value rounded at the nearest cent.
 	 */
 	public double roundToCent(double d) {
-		return (double) (Math.round(d * 100) / 100.0);
+		return (Math.round(d * 100) / 100.0);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class Loan {
 	 * Compute the monthly interest rate from the annual interest rate.
 	 */
 	private double computeMonthlyRate() {
-		return (double) (0.01 * mAnnualRate / 12);
+		return (0.01 * mAnnualRate / 12);
 	}
 
 	/**
